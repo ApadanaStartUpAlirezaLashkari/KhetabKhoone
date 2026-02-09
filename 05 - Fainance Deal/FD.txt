@@ -1,1 +1,38 @@
 
+5.1 Unit Economics Deep Dive (صفحه 18–12)
+فرضیات کلیدی
+• قیمت متوسط کتاب: ۱۵۰,۰۰۰ تومان
+• کمیسیون پلتفرم: ۸٪
+• CAC متوسط: ۴۸,۰۰۰ تومان
+• LTV متوسط: ۱۴۴,۰۰۰ تومان (Retention سه ماهه ۶۰٪)
+• Churn: ۴۰٪ بعد از ۳ ماه
+محاسبه Unit Economics
+متریکفرمولمقدارGross Profit(Revenue × Commission) – Variable Cost11,520 تومانContribution MarginGross Profit / Revenue7.7٪Payback PeriodCAC / Monthly Contribution1 ماهLTV/CACLTV / CAC3.0 
+تحلیل حساسیت
+• CAC افزایش ۲۰٪ → LTV/CAC = 2.5 → کاهش مقیاس‌پذیری
+• Retention ۵۰٪ → LTV = 120,000 → LTV/CAC = 2.5
+• حاشیه سود با کمیسیون ۱۰٪ → Contribution Margin = 9.6٪
+5.2 Model Financial Statement (صفحه 10–15 + اکسل)
+ساختار فایل اکسل
+• L&P: پیش‌بینی درآمد و هزینه‌ها برای ۱۸ ماه
+• Balance Sheet: دارایی‌ها، بدهی‌ها، حقوق صاحبان سهام
+• Cash Flow: پیش‌بینی نقدینگی ماهانه
+• Scenario Analysis: Base / Optimistic / Pessimistic
+فرضیات گزارش
+متریکBaseOptimisticPessimisticرشد کاربران۲۰٪ ماهانه۳۰٪ ماهانه۱۵٪ ماهانهقیمت کتاب۱۵۰,۰۰۰۱۵۰,۰۰۰۱۵۰,۰۰۰CAC۴۸,۰۰۰۴۰,۰۰۰۶۰,۰۰۰هزینه زیرساخت۲۰ میلیون/ماه۱۵ میلیون۲۵ میلیونهزینه حقوق۴۵۰ میلیون/سال۴۰۰ میلیون۵۰۰ میلیون 
+تحلیل
+• نقاط شکست: CAC > LTV → توقف رشد
+• Runway واقعی: با سرمایه اولیه ۵ میلیارد تومان → ۱۸ ماه
+5.3 Plan Burn Month-by-Month (صفحه 8–12)
+ماهحقوقزیرساختمارکتینگفروشحقوقی/رگولاتوریابزارهاکل1۳۰۵۱۰۵۲۳۵۵2۳۵۵۱۵۶۲۳۶۶……………………18۵۵۸۳۰۱۵۵۶۱۱۹ 
+Triggerهای کنترل هزینه
+• Retention <۵۰٪ → کاهش ۳۰٪ مارکتینگ
+• تراکنش ماهانه <۲۰۰۰ → کاهش ۲۰٪ فروش و ابزارها
+• CAC >۵۰,۰۰۰ → توقف کمپین دیجیتال
+5.4 Cap Table + ESOP Plan (صفحه 8–5)
+سهامداردرصدVestingCliffESOPتعهداتبنیان‌گذار ۱۴۰٪۴ سال۱ سال—غیرقابل فروش تا v1.0بنیان‌گذار ۲۳۰٪۴ سال۱ سال——سرمایه‌گذار Seed۲۰٪———حقوق مالی و گزارش‌دهیESOP Pool۱۰٪——۱۰٪جذب تیم کلیدی 
+• ابزار مالی قبلی: SAFE Note → ریسک diluition و توافق بعدی
+5.5 Comparable & Exit Scenarios (صفحه 15–10)
+شرکتصنعتمدل درآمدمقیاسسناریو خروجخریداران محتملMilestones لازمBookNetمارکت‌پلیس کتابکمیسیون۵۰۰ هزار تراکنش/سالAcquisitionناشر، VCرسیدن به ۵۰,۰۰۰ تراکنشReadlyاشتراک کتابSubscription۱۰۰,۰۰۰ کاربرIPO/Acqشرکت‌های دیجیتال، ناشرRetention ≥۶۰٪، LTV/CAC ≥۳ZBookفروش دست‌دومکمیسیون۲۰,۰۰۰ تراکنشAcquisitionBookstore Chainsثبت ۲۰,۰۰۰ آگهی فعال 
+• مسیر بازگشت سرمایه واقعی: رسیدن به تراکنش و LTV/CAC هدف، تثبیت retention و گسترش بازار
+
