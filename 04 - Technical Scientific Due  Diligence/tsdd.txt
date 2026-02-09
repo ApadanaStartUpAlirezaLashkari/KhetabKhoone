@@ -1,1 +1,93 @@
 
+4.1 PRD — Product Requirements Document (صفحه 30–20)
+نیازمندی‌های عملکردی
+• ثبت و مدیریت آگهی کتاب (فروش/اجاره)
+• جستجوی پیشرفته بر اساس عنوان، نویسنده، دانشگاه
+• سیستم پرداخت امن و ودیعه اجاره
+• رتبه‌بندی و امتیاز فروشنده
+• اعلان بازگشت کتاب اجاره‌ای
+نیازمندی‌های غیرفرمال
+• تجربه کاربری ساده و بدون پیچیدگی
+• اطلاع‌رسانی به کاربران برای تراکنش‌ها
+Story User
+• به عنوان یک دانشجو، می‌خواهم کتاب درسی را اجاره کنم تا هزینه کمتری پرداخت کنم
+• به عنوان فروشنده، می‌خواهم کتاب‌هایم سریع بفروشم و مطمئن باشم پولم برگشت می‌کند
+سناریوهای استفاده
+• دانشجو کتاب را انتخاب و ودیعه پرداخت می‌کند
+• فروشنده کتاب را تحویل می‌دهد
+• اپلیکیشن وضعیت کتاب و تاریخ بازگشت را پیگیری می‌کند
+Edge Case
+• دیرکرد بازگشت کتاب → سیستم ودیعه کسر می‌کند
+• لغو پرداخت → بازگشت وجه خودکار
+معیار پذیرش
+• ثبت آگهی با موفقیت انجام شود
+• پرداخت امن بدون خطا
+• Retention سه ماهه ≥ ۶۰٪
+وابستگی‌ها
+• تیم فروش: برای مدیریت تراکنش‌ها
+• تیم حقوقی: برای قراردادهای اجاره
+• تیم دیتا: برای جمع‌آوری KPI و گزارش
+4.2 Document Architecture System (صفحه 20–35)
+دیاگرام‌ها
+• جریان داده از کاربر → API → DB → اپ موبایل/web
+• مرزبندی سرویس‌ها: Authentication, Catalog, Payment, Notification
+انتخاب دیتابیس‌ها
+• PostgreSQL برای داده‌های ساختاری
+• Redis برای کش و session
+امنیت
+• JWT و OAuth2 برای AuthN/AuthZ
+• رمزنگاری داده حساس در Rest API
+Observability
+• Prometheus + Grafana برای metric
+• ELK Stack برای logging
+برنامه مقیاس‌پذیری
+• Load balancer برای API
+• Auto-scaling در سرورها
+تصمیمات معماری (ADR)
+• انتخاب PostgreSQL برای تراکنش مالی → پایداری بالا
+• Redis برای caching → کاهش latency
+4.3 Pack Prototype & Scope MVP (صفحه 12–8 + لینک دمو)
+• MVP واقعی: ثبت آگهی، جستجوی پیشرفته، پرداخت امن، اجاره با ودیعه
+• Mock: بخش الگوریتم پیشنهاد کتاب و سیستم رتبه‌بندی پیشرفته
+• لینک دمو: Demo Bookkhone MVP
+• سناریوی تست: ۵ تراکنش خرید، ۳ اجاره، بررسی بازگشت وجه
+4.4 Codebase & Engineering Quality Pack (صفحه 12–8)
+• ساختار پروژه: Microservices، هر سرویس repo جدا
+• استانداردها: PEP8، ESLint، تست واحد پوشش ≥۷۰٪
+• CI/CD: GitLab Pipeline با build و deploy خودکار
+• مدیریت نسخه: Semantic Versioning
+• Technical Debt: ثبت در Jira، اولویت‌بندی هر Sprint
+• انتقال دانش: مستندات و جلسات هفتگی
+4.5 QA/Test Strategy + Test Evidence (صفحه 15–10)
+• تست واحد، یکپارچه، End-to-End، امنیت و رگرسیون
+• گزارش اجرا: پوشش کد ۷۵٪، باگ critical < ۵٪
+• Release process: مرحله‌ای، staging → production
+• Evidence: اسکرین‌شات و log تست‌ها
+4.6 Security Threat Model (صفحه 20–12)
+تهدیدمهاجمسطح حملهکنترل‌هامانیتورینگIncident Responseسرقت حسابکاربر مخرببالا2FAAlert on login failLock account + notifyدسترسی غیرمجاز DBهکرمتوسطEncryptionLog monitoringBackup restoreتقلب در پرداختکاربر یا فروشندهمتوسطVerification APITransaction logDispute resolution 
+4.7 Privacy & Data Lifecycle (GDPR-ready) (صفحه 15–10)
+• داده‌ها: کاربر، تراکنش، کتاب
+• ذخیره: PostgreSQL + Redis
+• نگهداری: ۵ سال برای تراکنش، حذف خودکار پس از آن
+• دسترسی: تیم محصول محدود، تیم دیتا و مالی دسترسی نیازمند تایید
+• DPA با فروشنده‌ها و پردازنده‌ها تنظیم شده
+4.8 Performance & Scalability Plan (صفحه 12–8)
+• SLO: Uptime 99.9٪، Latency ≤ 200ms
+• Load Test: ۱۰۰۰ تراکنش همزمان، بدون خطا
+• Bottleneck: Payment Service → حل با queue
+• برنامه افزایش ظرفیت: Auto-scaling و database sharding
+4.9 Dataset Documentation (Data Sheet + Dictionary) (صفحه 20–12)
+FeatureTypeSourceMissingnessBiasDriftLabelBook TitlestringUser input0%lowlow—PriceintUser input0%lowmedium—User RatingfloatUser input5%mediummedium— 
+• مجوز استفاده: توافق کاربر
+• محدودیت: داده شخصی رمزنگاری شده
+4.10 Model Card + Evaluation Report (صفحه 25–15)
+• مدل ML: پیشنهاد کتاب بر اساس تراکنش گذشته
+• متریک‌ها: Precision 0.82, Recall 0.78
+• Robustness: تست روی داده‌های جدید و ناهنجاری
+• Critical Failure: پیشنهاد اشتباه کتاب برای اجاره → کاهش retention
+4.11 MLOps & Monitoring Plan (صفحه 15–10)
+• ورژن‌دهی مدل: Semantic Versioning
+• مانیتورینگ: Drift detection، Metric monitoring
+• بازآموزی: هر ۲ هفته یا بعد از ۱۰۰۰ تراکنش جدید
+• Rollback: امکان بازگشت به نسخه قبلی در صورت خطا
+✅ این نسخه شامل تمام نیازمندی‌های محصول، معماری، MVP، کیفیت کد، QA، امنیت، حریم خصوصی، عملکرد و داده/مدل ML است و با جداول، 
